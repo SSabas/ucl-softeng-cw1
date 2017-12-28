@@ -1,11 +1,27 @@
-'''
-The following code is a simpler version (random strategy, no intelligence involved) of the famous Hunt the Wumpus game.
-'''
-
 import random
 import copy
 
-class dungeon(object):
+
+class Dungeon(object):
+
+    """
+    The following code is a simpler version (random strategy, no
+    intelligence involved) of the famous Hunt the Wumpus game.
+    
+    For initialisation the class requires a dictionary input with following keys:
+    - treasure (starting location of treasure, value must be integer)
+    - adventurer (location of adventurer, value must be integer)
+    - troll (starting location of troll, value must be integer)
+    - network (dungeon structure, value must be a list, where each elements
+      specifies a room in the dungeon and the numbers in given element
+      exit options, i.e. list[[2], [0,2], [1]] would mean that there are
+      3 rooms and room 1 has exit to rooms 0 and 2.)
+      
+    Main function (success_chance) executes random move strategy
+    multiple times (number of trials is optional argument, with default
+    trials = 500) and returns the probability of adventurer successfully
+    finding the treasure without being eaten by the troll.
+    """
 
     def __init__(self, dungeon):
         self.treasure = dungeon['treasure']
@@ -50,31 +66,10 @@ class dungeon(object):
         # don't run forever, return 0 (e.g. if there is no treasure and the troll can't reach the adventurer)
         return result
 
-    def success_chance(self, trials=10000, successes=0):
+    def success_chance(self, trials=500, successes=0):
         for n in range(trials):
             outcome = self.run_to_result()
             if outcome == 1:
                 successes += 1
         success_fraction = successes / trials
         return success_fraction
-
-
-dungeon1 = {
- 'treasure' : [1], # Room 1 contains treasure
- 'adventurer': 0, # The adventurer starts in room 0
- 'troll': 2, # The troll starts in room 2
- 'network': [[1], #Room zero connects to room 1
- [0,2], #Room one connects to rooms 0 and 2
- [1] ] #Room 2 connects to room 1
-}
-
-
-dungeon2 = {
- 'treasure' : [1], # Room 1 contains treasure
- 'adventurer': 0, # The adventurer starts in room 0
- 'troll': 2, # The troll starts in room 2
- 'network': [[1], #Room zero connects to room 1
- [0,2], #Room one connects to rooms 0 and 2
- [1,3], #Room 2 connects to room 1 and 3
- [2]] # Room 3 connects to room 2
-}

@@ -1,0 +1,4 @@
+from adventure.command import parse_args, load_config, run_dungeon
+
+cfgdata = parse_args()
+run_dungeon(cfgdata)
