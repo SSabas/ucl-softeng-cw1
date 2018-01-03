@@ -67,6 +67,8 @@ class Dungeon(object):
         return result
 
     def success_chance(self, trials=500, successes=0):
+        if not (type(trials) == int) or not trials > 0:
+            raise ValueError("The number of samples must be a positive integer!")
         for n in range(trials):
             outcome = self.run_to_result()
             if outcome == 1:

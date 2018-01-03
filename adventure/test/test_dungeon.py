@@ -16,7 +16,7 @@ def test_dungeon_input_errors_wrong_type():
     Dungeon(3)
 
 
-@raises(TypeError)
+@raises(ValueError)
 def test_dungeon_input_errors_sample_size_not_integer():
     """ Check that code does not run with non-integer number of trials. """
     example_dungeon = {'treasure' : [1],

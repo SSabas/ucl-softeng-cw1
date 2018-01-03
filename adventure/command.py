@@ -10,10 +10,9 @@ def parse_args():
                                         "treasure. Input file must be in YAML "
                                         "format and with correct dungeon structure "
                                         "(see Dungeon class for example).")
-    parser.add_argument('--file', type=str,
-                        help='YAML file to load dungeon structure.')
+    parser.add_argument('file', help='Path to YAML file to load dungeon structure.')
     parser.add_argument('--samples', default=500, type=int,
-                        help='number of samples to be drawn. Must be an integer.')
+                        help='Number of samples to be drawn. Must be positive integer.')
     arguments = parser.parse_args()
     cfgdata = {"from_file": arguments.file,
                "sample_size": arguments.samples}
