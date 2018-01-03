@@ -8,6 +8,6 @@ setup(
     author_email='sven.sabas.17@ucl.ac.uk',
     license='The MIT License (MIT)',
     packages=find_packages(exclude=['*test']),
-    scripts=['scripts/hunt'],
-    install_requires=['argparse']
+    entry_points={'console_scripts': ['hunt = adventure.command:run_dungeon']},
+    install_requires=['argparse', 'yaml']
 )

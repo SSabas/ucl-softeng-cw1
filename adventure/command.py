@@ -27,12 +27,12 @@ def load_config(config_filename):
     return cfgdata
 
 
-def run_dungeon(cfgdata):
+def run_dungeon():
+    cfgdata = parse_args()
     dungeon_structure = load_config(cfgdata["from_file"])
     test_dungeon = Dungeon(dungeon_structure)
     return print(test_dungeon.success_chance(trials=cfgdata["sample_size"]))
 
 
 if __name__ == "__main__":
-    cfgdata = parse_args()
-    run_dungeon(cfgdata)
+    run_dungeon()
