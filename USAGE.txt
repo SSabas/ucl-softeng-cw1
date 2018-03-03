@@ -1,0 +1,37 @@
+To install, run: sudo python setup.py install
+
+To run type: hunt  [-h]
+                   [--file FILE]
+                   [--sample SAMPLE]
+
+Optional arguments:
+  -h, --help
+                        Shows a help message and exits.
+  
+  --file "filename.yml"
+                        Mandatory YAML file to load the dungeon structure from.
+                        
+  --samples [int]
+                        Number of Monte Carlo samples to be drawn.
+
+The code implements a Monte Carlo simulation approach to compute the probability of success of the treasure hunt game. The material has been adapted from code provided as an assignment for UCL's MPHYG001 course at https://github.com/UCL/rsd-engineeringcourse. The 'adventure' code is inspired in part from "Hunt the Wumpus", Gregory Yob (1975) https://www.atariarchives.org/bcc1/showpage.php?page=247.
+
+The dungeon structure must be specified in an YMAL file in the following format:
+
+	treasure : [1]
+	adventurer: 0
+	troll: 2
+	network: [[1], [0,2], [1]]
+
+As the Dungeon class requires a dictionary for an initialisation. The input dictionary must have the following keys:
+	- treasure (starting location of treasure, value must be integer)
+	- adventurer (location of adventurer, value must be integer)
+	- troll (starting location of troll, value must be integer)
+	- network (dungeon structure, value must be a list, where each elements specifies
+	a room in the dungeon and the numbers in given element the exit options, i.e.
+	list [[2],[0,2], [1]] would mean that there are 3 rooms and room 1 has exit to 		rooms 0 and 2.)
+
+      
+Main module for the class (success_chance) executes random move strategy multiple times (number of trials is optional argument, with default trials = 500) and returns the probability of adventurer successfully finding the treasure without being eaten by the troll.
+
+The number of Monte Carlo samples to be drawn can be specified with --samples [int]. Defaults to 500.
