@@ -1,0 +1,8 @@
+To refer to this software, please cite:
+Sven Sabas, CDT in Financial Computing, University College London, London WC1E 6BT, United Kingdom
+sven.sabas.17@ucl.ac.uk
+
+This material has been adapted from code provided as an assignment for UCL's MPHYG001 course at https://github.com/UCL/rsd-engineeringcourse
+
+The 'adventure' code is inspired in part from "Hunt the Wumpus", Gregory Yob (1975) https://www.atariarchives.org/bcc1/showpage.php?page=247
+
